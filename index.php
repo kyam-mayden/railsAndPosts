@@ -12,10 +12,10 @@ $_SESSION['invalidInput'] = false;
  * @return array of [length, 0,0] or [0, posts needed, rails needed]
  */
 function userDecision ($length, $posts, $rails): array {
-    if ($length>0) {
+    if ($length>0 && is_numeric($length)) {
         return [$length,0,0];
         $_SESSION['invalidInput'] = false;
-    } elseif ($posts>0 && $rails>0) {
+    } elseif ($posts>0 && $rails>0 && is_numeric($posts) && is_numeric($rails)) {
         return [0.0,floor($posts),floor ($rails)];
         $_SESSION['invalidInput'] = false;
     } else{
